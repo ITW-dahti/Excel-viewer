@@ -1,22 +1,56 @@
 
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>My Excel Web Page</title>
-    <style>
-        body, html { margin: 0; padding: 0; height: 100%; }
-        iframe { width: 100%; height: 100%; border: none; }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Excel Viewer (Auto-refresh)</title>
+  <style>
+    html, body { height: 100%; margin: 0; background: #f6f7f9; }
+    .wrap { height: 100vh; display: flex; flex-direction: column; }
+    header {
+      padding: 10px 14px; font: 600 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color: #222; background: #fff; border-bottom: 1px solid #e4e6eb;
+    }
+    .iframe-box { flex: 1; }
+    iframe { border: 0; width: 100%; height: 100%; background: #fff; }
+  </style>
 </head>
 <body>
-<iframe width="402" height="346" frameborder="0" scrolling="no" src="https://itwconnect.sharepoint.com/sites/EngineeringProjects/_layouts/15/Doc.aspx?sourcedoc={b3dcef29-c218-43b4-9fe3-8694253cdd93}&action=embedview&wdAllowInteractivity=False&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True&edaebf=rslc0"></iframe>
+  <div class="wrap">
+    <header>
+      Excel Viewer — auto-refresh each load
+    </header>
 
- <script>
-    const iframe = document.querySelector('iframe');
-    iframe.src += '&v=' + Date.now(); // Adds a timestamp to force refresh
+    <div class="iframe-box">
+      <!-- Your original Teams/SharePoint embed iframe -->
+      <iframe
+        id="excelFrame"
+        width="100%"
+        height="100%"
+        frameborder="0"
+       43b4-9fe3-8694253cdd93}&action=embedview&wdAllowInteractivity=False&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True&edaebf=rslc0
+      </iframe>
+    </div>
+  </div>
+
+  <!-- Cache-busting: adds a unique timestamp so the viewer fetches the latest version -->
+  <script>
+    (function () {
+      const iframe = document.getElementById('excelFrame');
+      try {
+        // If the src already has query params, append with &
+        const hasQuery = iframe.src.includes('?');
+        const sep = hasQuery ? '&' : '?';
+        iframe.src = iframe.src + sep + 'v=' + Date.now();
+      } catch (e) {
+        // Fail silently if anything unexpected occurs
+        console.warn('Cache-busting failed:', e);
+      }
+    })();
   </script>
-
 </body>
 </html>
+
 
 
