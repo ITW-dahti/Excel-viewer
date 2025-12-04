@@ -10,6 +10,13 @@
 </head>
 <body>
 <iframe width="402" height="346" frameborder="0" scrolling="no" src="https://itwconnect.sharepoint.com/sites/EngineeringProjects/_layouts/15/Doc.aspx?sourcedoc={b3dcef29-c218-43b4-9fe3-8694253cdd93}&action=embedview&wdAllowInteractivity=False&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True&edaebf=rslc0"></iframe>
+
+ <script>
+    const iframe = document.querySelector('iframe');
+    iframe.src += '&v=' + Date.now(); // Adds a timestamp to force refresh
+  </script>
+
 </body>
 </html>
+
 
