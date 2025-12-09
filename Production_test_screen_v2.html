@@ -11,13 +11,12 @@
   </style>
 </head>
 <body>
-  <iframe
-    id="excelFrame"
-    src="https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Fitwconnect.sharepoint.com%2F%3Ax%3A%2Fs%2FEngineeringProjects%2FESnv3LMYwrRDn-OGlCU83ZMB8qgPV3-VjfIVDbiBBYa0Hw%3Fe%3DYJnnvP&wdHideHeaders=True&wdDownloadButton=True&v=1733330000000"
-   busting every time page loads
+  https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Fitwconnect.sharepoint.com%2F%3Ax%3A%2Fs%2FEngineeringProjects%2FESnv3LMYwrRDn-OGlCU83ZMB8qgPV3-VjfIVDbiBBYa0Hw%3Fe%3DYJnnvP&wdHideHeaders=True&wdDownloadButton=True&v=1733330000000
+
+  <script>
+    // Optional: force cache-busting every time page loads
     const iframe = document.getElementById('excelFrame');
     iframe.src = iframe.src.replace(/v=\d+$/, 'v=' + Date.now());
   </script>
 </body>
 </html>
-
